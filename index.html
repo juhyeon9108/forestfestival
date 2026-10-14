@@ -331,7 +331,7 @@
     const cancelButton = document.getElementById('cancel-submit');
     const submitButton = document.getElementById('submit-button');
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyG59FIs4piLP_uJiKVM9ZeQb2-2Cf8Zu2-ihjihn9n0AuRuGFxWueeeRQ6_5EWzolsUQ/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby1tT6fOySCtHMIZvbiLppf6qGHwSg_Eb7qr43jQOhM1rrHmZtV-TnK9qI1HUNYnvOY0w/exec';
 
     function setStatus(message, error = false) {
       status.textContent = message;
@@ -442,6 +442,11 @@
         form.classList.add('hidden');
         showCancelBtn.classList.add('hidden');
         cancelContainer.classList.remove('hidden');
+        // '신청 취소하기' 영역으로 스크롤 이동
+        const cancelHeader = document.querySelector('#cancel-form-container h3');
+        if(cancelHeader) {
+            cancelHeader.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     });
 
     hideCancelBtn.addEventListener('click', () => {
@@ -451,6 +456,11 @@
         cancelStatus.textContent = '';
         cancelName.value = '';
         cancelPhone.value = '';
+        // '참가 신청' 영역으로 스크롤 이동
+        const applyHeader = document.getElementById('registration-heading');
+        if(applyHeader) {
+            applyHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     });
 
     // --- 취소 요청 전송 로직 ---
